@@ -10,13 +10,13 @@ import org.http4s.client.blaze.BlazeClientBuilder
 import org.http4s.client.Client
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import fs2._
 import scala.concurrent.duration._
+import scala.util.Properties
+import fs2._
 import java.util.Calendar
+import java.{util => ju}
 
 import scraper.HttpClient
-import scala.util.Properties
-import java.{util => ju}
 
 // The only place where the Effect is defined. You could change it for `TaskApp` and `monix.eval.Task` for example.
 object Server extends IOApp {

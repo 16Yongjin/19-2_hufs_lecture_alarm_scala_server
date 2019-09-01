@@ -28,17 +28,7 @@ class HttpClient[F[_]: ContextShift: Timer: Parallel](client: Client[F])(
     implicit F: ConcurrentEffect[F]
 ) extends Http4sClientDsl[F] {
 
-  val parser = new LectureParser[F]()
-
-  def request: F[Unit] = {
-
-    val lectures = for {
-      html     <- fetchCourseHtml("AKA_H1")
-      lectures <- parser.parseLectures("AKA_H1")(html)
-    } yield lectures
-
-    lectures.flatMap(body => F.delay(println(body)))
-  }
+  private val parser = new LectureParser[F]()
 
   def lectureList(courseId: String): OptionT[F, List[Lecture]] = {
     val lectures = for {

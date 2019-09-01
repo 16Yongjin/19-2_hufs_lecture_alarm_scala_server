@@ -53,7 +53,7 @@ object model {
     )
 
     private def buildNotification(lecture: Lecture): Notification = {
-      val msg  = s"""${lecture.name} ${lecture.professor} 자리 났습니다!!"""
+      val msg  = s"""${lecture.name} / ${lecture.professor} / ${lecture.time} 자리 났습니다!!"""
       val icon = "noti-icon.png"
 
       Notification(msg, icon)
